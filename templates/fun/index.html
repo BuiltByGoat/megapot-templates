@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{{SITE_NAME}} — a $1 ticket to a $1,000,000+ daily prize pool</title>
+<meta name="description" content="A daily lottery with $1 tickets, ten prize tiers, a $1,000,000+ daily prize pool, and odds Megapot publishes out loud. Independent referral site — plays happen on megapot.io.">
+<style>
+:root{--brand:#7c5cff;{{THEME_VARS}}}
+:root{
+--bg:#fff6ea;--surface:#ffffff;--surface2:#fbecd4;--ink:#2a1a4e;--muted:#5f5480;
+--line:#e8d8c2;--pink:#b3195e;--teal:#0a6f60;--goldtx:#7c5400;--gold:#ffd166;--goldink:#2b1a05;
+--cta-bg:#c31e5f;--cta-ink:#ffffff;--focus:#b3195e;--strip-bg:#2a1a4e;--strip-ink:#ffd166;
+--shadow:0 10px 26px rgba(42,26,78,.13);
+}
+@media (prefers-color-scheme:dark){:root{
+--bg:#150e2a;--surface:#231747;--surface2:#2d1e59;--ink:#f6f0ff;--muted:#c0b4e2;
+--line:#463a6e;--pink:#ff8fc7;--teal:#54e0c7;--goldtx:#ffd166;
+--cta-bg:#ffd166;--cta-ink:#2b1a05;--focus:#ffd166;--strip-bg:#ffd166;--strip-ink:#2b1a05;
+--shadow:0 10px 26px rgba(0,0,0,.5);
+}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3,.logo,.cta,.admit,.chip,.mq,.num,.price,.dream{font-family:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:64px 0;scroll-margin-top:82px}
+section.alt{background:var(--surface2)}
+h2{font-size:clamp(1.8rem,4.2vw,2.6rem);line-height:1.12;margin:8px 0 12px;letter-spacing:-.5px}
+h3{margin:0 0 6px;font-size:1.18rem}
+p{margin:.55em 0}
+a{color:var(--pink)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:10px;z-index:99;background:var(--surface);color:var(--ink);padding:12px 18px;border-radius:12px;box-shadow:var(--shadow)}
+.skip:focus{left:10px}
+.center{text-align:center}
+.mt{margin-top:28px}
+.fn{font-size:.86rem;color:var(--muted)}
+.muted{color:var(--muted)}
+.eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 4px;font-size:.82rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:12px;height:12px;border-radius:4px;background:var(--brand);flex:none;transform:rotate(15deg)}
+.eyebrow.mid{justify-content:center}
+header.top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:2px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:10px;padding-top:8px;padding-bottom:8px}
+.logo{margin:0;font-weight:900;font-size:1.12rem;display:flex;align-items:center;gap:9px}
+.logo .dot{width:14px;height:14px;border-radius:4px;background:var(--brand);transform:rotate(12deg)}
+nav.sections{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+nav.sections a{color:var(--ink);text-decoration:none;font-weight:700;font-size:.95rem;padding:12px 10px;border-radius:10px;min-height:44px;display:inline-flex;align-items:center}
+nav.sections a:hover{background:var(--surface2)}
+header.top .cta{min-height:44px;padding:9px 20px;font-size:1rem}
+@media (max-width:760px){nav.sections{display:none}header.top .cta{margin-left:auto}}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 30px;border-radius:999px;background:var(--cta-bg);color:var(--cta-ink);font-weight:900;font-size:1.08rem;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s}
+.cta::after{content:"→";font-weight:900}
+.cta:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 16px 32px rgba(0,0,0,.28)}
+.cta:active{transform:translateY(1px)}
+.confetti{position:relative}
+.confetti::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:
+radial-gradient(6px 6px at 5% 22%,var(--brand) 50%,transparent 52%),
+radial-gradient(5px 5px at 13% 72%,var(--pink) 50%,transparent 52%),
+radial-gradient(7px 7px at 25% 10%,var(--gold) 50%,transparent 52%),
+radial-gradient(4px 4px at 37% 92%,var(--teal) 50%,transparent 52%),
+radial-gradient(6px 6px at 55% 6%,var(--pink) 50%,transparent 52%),
+radial-gradient(5px 5px at 67% 94%,var(--brand) 50%,transparent 52%),
+radial-gradient(7px 7px at 79% 14%,var(--teal) 50%,transparent 52%),
+radial-gradient(5px 5px at 89% 62%,var(--gold) 50%,transparent 52%),
+radial-gradient(4px 4px at 97% 28%,var(--pink) 50%,transparent 52%),
+radial-gradient(6px 6px at 45% 98%,var(--gold) 50%,transparent 52%)}
+.hero{padding:70px 0 84px;overflow:hidden}
+.hero .wrap{position:relative;display:grid;gap:40px;grid-template-columns:1.15fr .85fr;align-items:center}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+h1{font-size:clamp(2.5rem,6.5vw,4.1rem);line-height:1.04;letter-spacing:-1px;margin:6px 0 10px}
+.dream{font-size:clamp(1.45rem,3.6vw,2.1rem);font-weight:900;line-height:1.2;margin:10px 0 6px}
+.spin{display:inline-block;height:1.25em;overflow:hidden;vertical-align:bottom}
+.spin ul{margin:0;padding:0;list-style:none;animation:spin 15s infinite}
+.spin li{display:block;height:1.25em;line-height:1.25;color:var(--pink);text-decoration:underline wavy var(--brand) 2px;text-underline-offset:5px;white-space:nowrap}
+@keyframes spin{0%,12%{transform:translateY(0)}16.6%,28.6%{transform:translateY(-1.25em)}33.3%,45.3%{transform:translateY(-2.5em)}50%,62%{transform:translateY(-3.75em)}66.6%,78.6%{transform:translateY(-5em)}83.3%,95.3%{transform:translateY(-6.25em)}100%{transform:translateY(-7.5em)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px;padding:0;list-style:none}
+.chip{border:2px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 16px;font-weight:800;font-size:.94rem}
+.chip::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--brand);margin-right:8px;vertical-align:-1px}
+.chip.gold{background:var(--gold);color:var(--goldink);border-color:var(--gold)}
+.chip.gold::before{background:var(--goldink)}
+.ticket{position:relative;background:var(--surface);border:3px solid var(--brand);border-radius:22px;padding:24px 30px;box-shadow:var(--shadow);transform:rotate(2deg);transition:transform .2s}
+.ticket:hover{transform:rotate(0)}
+.ticket::before,.ticket::after{content:"";position:absolute;top:50%;margin-top:-14px;width:28px;height:28px;border-radius:50%;background:var(--bg);border:3px solid var(--brand)}
+.ticket::before{left:-17px}
+.ticket::after{right:-17px}
+.tick-top{display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed var(--line);padding-bottom:10px;margin-bottom:12px}
+.admit{letter-spacing:.28em;font-weight:900;color:var(--muted);font-size:.82rem}
+.price{font-weight:900;font-size:1.6rem;color:var(--pink)}
+.balls{display:flex;gap:8px;margin:12px 0;padding:0}
+.balls i,.balls b{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:800;font-size:.95rem}
+.balls b{background:var(--gold);color:var(--goldink);border:2px solid var(--brand)}
+.barcode{height:34px;margin-top:16px;border-radius:4px;opacity:.85;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 9px,transparent 9px 13px)}
+.marquee{overflow:hidden;background:var(--strip-bg);color:var(--strip-ink);transform:rotate(-1.2deg) scale(1.03)}
+.mq{display:inline-block;white-space:nowrap;padding:11px 0;font-weight:900;letter-spacing:.1em;font-size:.95rem;animation:mq 32s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));margin-top:24px}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+.card:hover{border-color:var(--brand)}
+.tilt .card:nth-child(odd){transform:rotate(-.6deg)}
+.tilt .card:nth-child(even){transform:rotate(.6deg)}
+.tilt .card::before{content:"";display:block;width:15px;height:15px;border-radius:5px;background:var(--brand);transform:rotate(15deg);margin-bottom:12px}
+.tilt .card:nth-child(2n)::before{background:var(--pink)}
+.tilt .card:nth-child(3n)::before{background:var(--teal)}
+.steps{list-style:none;counter-reset:s;padding:0;margin:24px 0 0;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.steps li{counter-increment:s;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:22px}
+.steps li::before{content:counter(s);display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--strip-bg);color:var(--strip-ink);font-weight:900;font-size:1.3rem;margin-bottom:10px}
+.ladder{list-style:none;padding:0;margin:26px 0 6px;display:grid;gap:10px}
+.ladder li{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:13px 18px}
+.ladder strong{min-width:170px}
+.joke{color:var(--muted)}
+.combo{display:flex;gap:5px;align-items:center;flex:none;min-width:150px}
+.combo i{width:16px;height:16px;border-radius:50%;background:var(--ink);display:block}
+.combo .st{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--goldink);display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;font-style:normal;border:2px solid var(--brand)}
+.ladder .jack{background:var(--gold);border-color:var(--brand);padding:20px 18px}
+.jack strong,.jack .joke{color:var(--goldink)}
+.jack .combo i{background:var(--goldink)}
+.score{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px}
+.num{display:block;font-size:clamp(1.9rem,4vw,2.5rem);font-weight:900;line-height:1.1;color:var(--pink)}
+.num.tealed{color:var(--teal)}
+.num.golded{color:var(--goldtx)}
+.bar{display:flex;height:44px;border-radius:12px;overflow:hidden;margin:16px 0 12px;border:2px solid var(--line)}
+.bar span{display:block}
+.b1{width:77.5%;background:var(--teal)}
+.b2{width:12.5%;background:var(--brand)}
+.b3{width:10%;background:var(--pink)}
+.legend{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;padding:0;margin:0 0 10px;font-weight:700}
+.sw{width:14px;height:14px;border-radius:4px;display:inline-block;vertical-align:-2px;margin-right:7px}
+.links{list-style:none;padding:0;margin:16px 0 0}
+.links li{margin:2px 0}
+.links a{display:inline-flex;align-items:center;min-height:44px;padding:9px 0;font-weight:700}
+.vig .prose{max-width:46rem;border-left:4px solid var(--brand);padding-left:24px}
+.vig .scene,.vig .lit{font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif}
+.vig .scene{font-style:italic;font-weight:500;font-size:clamp(1.5rem,3.4vw,2.05rem);line-height:1.25;letter-spacing:0}
+.vig .lit{font-size:1.08rem}
+.vig .ground{margin-top:20px;padding-top:14px;border-top:2px dashed var(--line);font-size:.95rem;color:var(--muted)}
+.tblwrap{overflow-x:auto;margin-top:24px}
+table{width:100%;min-width:620px;border-collapse:separate;border-spacing:0;background:var(--surface);border:2px solid var(--line);border-radius:18px;overflow:hidden;font-size:.97rem}
+th,td{padding:13px 16px;text-align:left;border-top:2px solid var(--line);vertical-align:top}
+thead th{border-top:0;background:var(--strip-bg);color:var(--strip-ink);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-family:ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif}
+th[scope=row]{width:24%;font-weight:800}
+td.them{color:var(--muted)}
+.faq details{background:var(--surface);border:2px solid var(--line);border-radius:16px;margin:10px 0}
+.faq summary{cursor:pointer;padding:16px 20px;font-weight:800;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;border-radius:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;font-weight:900;color:var(--pink);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 20px 18px}
+.finale{padding:80px 0}
+.finale .cta{font-size:1.25rem;padding:18px 42px}
+footer{border-top:2px solid var(--line);padding:36px 0 52px;color:var(--muted);font-size:.93rem}
+footer p{margin:.7em 0}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<!-- {{PAGE_NOTE}} -->
+<a class="skip" href="#main">Skip to the good stuff</a>
+<header class="top">
+  <div class="wrap">
+    <p class="logo"><span class="dot" aria-hidden="true"></span>{{SITE_NAME}}</p>
+    <nav class="sections" aria-label="Sections">
+      <a href="#dreams">Dreams</a>
+      <a href="#how">How</a>
+      <a href="#prizes">Prizes</a>
+      <a href="#odds">Odds</a>
+      <a href="#compare">Versus</a>
+      <a href="#fineprint">Fine print</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="cta" href="{{INVITE_URL}}" rel="noopener">Play&nbsp;$1</a>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero confetti" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">{{SITE_NAME}} presents · the daily daydream machine</p>
+      <h1 id="hero-h">{{TAGLINE}}</h1>
+      <p>Every day, Megapot draws five numbers and a bonusball — and pays winners from a <strong>$1,000,000+ daily prize pool</strong>. A ticket costs one dollar. Which buys you a real shot — and a full day of premium daydreaming.</p>
+      <p class="dream"><span>If it hits, I'd&nbsp;</span><span class="sr">pay off the house. Or retire mom. Or buy the taco truck.</span><span class="spin" aria-hidden="true"><ul>
+        <li>pay off the house.</li>
+        <li>retire my mom.</li>
+        <li>buy the taco truck.</li>
+        <li>fly first class. Forever.</li>
+        <li>open the llama sanctuary.</li>
+        <li>quit. So, so politely.</li>
+        <li>pay off the house.</li>
+      </ul></span></p>
+      <ul class="chips">
+        <li class="chip">$1 a ticket</li>
+        <li class="chip">Drawings every day</li>
+        <li class="chip gold">$1,000,000+ daily prize pool</li>
+        <li class="chip">1 in 4 wins something*</li>
+      </ul>
+      <p class="fn">*Megapot's published odds. "Something" is usually not the jackpot. The daydream, though — that part's free.</p>
+    </div>
+    <div class="ticket">
+      <div class="tick-top"><span class="admit">ADMIT ONE</span><span class="price">$1</span></div>
+      <p class="balls" aria-hidden="true"><i>7</i><i>14</i><i>21</i><i>28</i><i>30</i><b>★</b></p>
+      <p class="fn">↑ your lucky numbers, probably</p>
+      <p><strong>Five numbers, one bonusball, ten ways to win.</strong> Drawn every single day.</p>
+      <a class="cta" href="{{INVITE_URL}}" rel="noopener">Grab a $1 ticket</a>
+      <p class="fn">Takes about a minute. Email works — no crypto degree required.</p>
+      <div class="barcode" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><span class="mq">DRAWINGS EVERY DAY&nbsp;&nbsp;★&nbsp;&nbsp;$1 A TICKET&nbsp;&nbsp;★&nbsp;&nbsp;$1,000,000+ DAILY PRIZE POOL&nbsp;&nbsp;★&nbsp;&nbsp;TEN WAYS TO WIN&nbsp;&nbsp;★&nbsp;&nbsp;1 IN 4 WINS SOMETHING&nbsp;&nbsp;★&nbsp;&nbsp;VERIFIABLY RANDOM (PER MEGAPOT)&nbsp;&nbsp;★&nbsp;&nbsp;DRAWINGS EVERY DAY&nbsp;&nbsp;★&nbsp;&nbsp;$1 A TICKET&nbsp;&nbsp;★&nbsp;&nbsp;$1,000,000+ DAILY PRIZE POOL&nbsp;&nbsp;★&nbsp;&nbsp;TEN WAYS TO WIN&nbsp;&nbsp;★&nbsp;&nbsp;1 IN 4 WINS SOMETHING&nbsp;&nbsp;★&nbsp;&nbsp;VERIFIABLY RANDOM (PER MEGAPOT)&nbsp;&nbsp;★&nbsp;&nbsp;</span></div>
+
+<section class="alt vig" aria-labelledby="vig-h">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">Cold open · Most nights, honestly</p>
+      <h2 class="scene" id="vig-h">Sunday, 11:40pm. You didn't win this time. You buy tomorrow's ticket anyway.</h2>
+      <p class="lit">Because the dollar was never really about the numbers. It bought the walk home where you quit your job four different ways, furnished a house you've never seen, and finally forgave someone — just because you could afford to.</p>
+      <p class="lit">Most tickets lose. Most daydreams end at the front door. But tomorrow there's another drawing. There's always another drawing.</p>
+      <p class="ground">This is the right way to play: a dollar, a daydream, and not one cent you'd miss. If it ever stops being fun, stop.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dreams" aria-labelledby="dreams-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 1 · The daydream</p>
+    <h2 id="dreams-h">What would you actually do with it?</h2>
+    <p>Not "what's the responsible portfolio allocation." What would you <em>do</em>? Day one. Be honest.</p>
+    <div class="grid tilt">
+      <div class="card"><h3>Mom's mortgage: gone</h3><p class="muted">One transfer. One phone call. One very confused, very happy mom.</p></div>
+      <div class="card"><h3>The world's politest resignation</h3><p class="muted">"Per my last email — I won the lottery. Warmest regards." Send. Log off.</p></div>
+      <div class="card"><h3>The taco truck you keep mentioning</h3><p class="muted">You've pitched it at every barbecue since 2019. Now it has rims and a name.</p></div>
+      <div class="card"><h3>Turn left when you board</h3><p class="muted">First class isn't a seat, it's a personality. Yours now.</p></div>
+      <div class="card"><h3>The llama sanctuary</h3><p class="muted">Forty acres. Every llama gets a name and a little winter coat.</p></div>
+      <div class="card"><h3>Scholarships with your name on them</h3><p class="muted">The plot twist where you become the hometown legend.</p></div>
+    </div>
+    <p class="center mt"><strong>The bet is $1. The daydream is free</strong> — and it starts the second you're holding a ticket.</p>
+    <p class="center"><a class="cta" href="{{INVITE_URL}}" rel="noopener">Start the daydream — $1</a></p>
+  </div>
+</section>
+
+<section id="how" class="alt" aria-labelledby="how-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 2 · The rules</p>
+    <h2 id="how-h">How it works (a ten-second read)</h2>
+    <ol class="steps">
+      <li><h3>Sign up in a minute</h3><p class="muted">Email is enough — a built-in account comes with it, no seed phrases, no lectures. Already have a wallet? Connect it and feel smug.</p></li>
+      <li><h3>Pick 5 numbers + a bonusball. Pay $1.</h3><p class="muted">Five numbers from 1–30, plus one bonusball — or smash Quick Pick and let fate do the typing. Your ticket is minted as an NFT you actually own.</p></li>
+      <li><h3>Daily drawing. Instant winnings.</h3><p class="muted">Results post immediately after every drawing. Win, and it's instantly claimable to your own wallet — no paperwork, no waiting weeks, no giant cardboard check.</p></li>
+    </ol>
+    <p class="fn mt">That was the whole thing. You even had seconds to spare.</p>
+  </div>
+</section>
+
+<section id="prizes" aria-labelledby="prizes-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 3 · The game board</p>
+    <h2 id="prizes-h">Ten ways to win (one of them is life-changing)</h2>
+    <p>Match numbers, climb the board. Per Megapot's docs, <strong>every winning tier pays a guaranteed minimum plus a share of that drawing's premium pool</strong> — and the jackpot tier alone takes 33% of the premium.</p>
+    <ol class="ladder">
+      <li class="jack"><span class="combo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><b class="st">★</b></span><strong>5 + bonusball — THE JACKPOT</strong><span class="joke">Confetti cannons. Ugly-crying. A speech nobody asked for.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><strong>5 numbers</strong><span class="joke">One star short of the moon — still a very big deal.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i><i></i><i></i><b class="st">★</b></span><strong>4 + bonusball</strong><span class="joke">"Dinner's on me. All of you. Yes, appetizers."</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>4 numbers</strong><span class="joke">A genuinely excellent Tuesday.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i><i></i><b class="st">★</b></span><strong>3 + bonusball</strong><span class="joke">Grin-at-your-phone-in-public money.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i><i></i></span><strong>3 numbers</strong><span class="joke">Better than every scratch-off in the glovebox.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i><b class="st">★</b></span><strong>2 + bonusball</strong><span class="joke">The board says: respectable.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><i></i></span><strong>2 numbers</strong><span class="joke">Modest. Counts on the scoreboard anyway.</span></li>
+      <li><span class="combo" aria-hidden="true"><i></i><b class="st">★</b></span><strong>1 + bonusball</strong><span class="joke">The bonusball carried you. Thank it.</span></li>
+      <li><span class="combo" aria-hidden="true"><b class="st">★</b></span><strong>Bonusball only</strong><span class="joke">The smallest win in the game. Still a win.*</span></li>
+    </ol>
+    <p class="fn">*Payout sizes vary by drawing — a guaranteed minimum per tier, plus that tier's premium share split among its winners (per Megapot's docs). Our jokes are moods, not payout estimates. Pro tip from those same docs: duplicate number combos split the premium, so picking unique numbers can mean bigger premium payouts. Choose weird numbers — everyone's birthday is taken.</p>
+    <div class="ticket mt">
+      <div class="tick-top"><span class="admit">ADMIT ONE · TODAY'S DRAWING</span><span class="price">$1</span></div>
+      <p><strong>$1,000,000+ in daily prizes. Ten tiers. One bonusball with your name on it</strong> <span class="muted">(statistically unlikely, emotionally certain)</span>.</p>
+      <a class="cta" href="{{INVITE_URL}}" rel="noopener">Play today's drawing</a>
+    </div>
+  </div>
+</section>
+
+<section id="odds" class="alt" aria-labelledby="odds-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 4 · The Odds-O-Meter</p>
+    <h2 id="odds-h">The odds, with zero spin</h2>
+    <p>All numbers below are Megapot's own published figures. We just added the jokes.</p>
+    <div class="score">
+      <div class="card"><span class="num">1 in 4</span><p><strong>tickets wins something*</strong></p><p class="fn">*Something ≠ the jackpot, but hey. The lower tiers have much better odds — that's the whole engine.</p></div>
+      <div class="card"><span class="num tealed">1 in 142,506</span><p><strong>to match 5 of 30</strong></p><p class="fn">Add the bonusball for the jackpot: about 1 in 1.4 million at range 10, about 1 in 713,000 at range 5.</p></div>
+      <div class="card"><span class="num golded">205× better</span><p><strong>jackpot odds than Powerball</strong></p><p class="fn">Megapot's own comparison — Powerball's jackpot sits near 1 in 292 million.</p></div>
+    </div>
+    <div class="card mt">
+      <h3>Why the bonusball range moves</h3>
+      <p class="muted">Bigger prize pool → wider bonusball range (harder jackpot). Smaller pool → narrower range (easier jackpot). The game auto-balances like a video-game boss, which is how the pool stays sustainable.</p>
+    </div>
+    <p class="mt"><strong>Will you win either jackpot? Statistically: probably not.</strong> But one of these is 205 times less impossible, and only one of them draws every single day. Most tickets lose — we'll keep saying it, cheerfully.</p>
+  </div>
+</section>
+
+<section id="compare" aria-labelledby="vs-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 5 · The head-to-head</p>
+    <h2 id="vs-h">Versus the gas-station ticket</h2>
+    <p>Same delicious "what if." Very different machine underneath.</p>
+    <div class="tblwrap" role="region" aria-labelledby="vs-h" tabindex="0">
+      <table>
+        <thead><tr><th scope="col"><span class="sr">Category</span></th><th scope="col">Megapot</th><th scope="col">The old way</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Returned to players</th><td>~77.5% of ticket sales (per Megapot)</td><td class="them">~50% or less — many government lotteries keep up to 70%</td></tr>
+          <tr><th scope="row">Jackpot odds</th><td>≈ 1 in 713,000–1.4 million, depending on the bonusball range (per Megapot)</td><td class="them">Powerball: ≈ 1 in 292 million</td></tr>
+          <tr><th scope="row">Getting paid</th><td>Instantly claimable to your own wallet</td><td class="them">Paperwork, offices, weeks of waiting</td></tr>
+          <tr><th scope="row">The randomness</th><td>Pyth verifiable randomness — every drawing recorded on-chain (on Base) for anyone to check</td><td class="them">A machine in a room. Trust the broadcast</td></tr>
+          <tr><th scope="row">Your ticket</th><td>An NFT you own, forever</td><td class="them">A paper slip fading in the junk drawer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">Megapot's column is per Megapot's published docs — which is also where the traditional-lottery comparison figures come from.</p>
+  </div>
+</section>
+
+<section id="fineprint" class="alt" aria-labelledby="fine-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 6 · The fine print, in large print</p>
+    <h2 id="fine-h">The most honest lottery pitch you'll read today</h2>
+    <p>Megapot publishes where every dollar goes. Out loud. On purpose.</p>
+    <div class="bar" role="img" aria-label="Breakdown of each one-dollar ticket: 77.5 cents back to players as prizes, 12.5 cents to backers who fund the prize pool, 10 cents to referrers who grow the game"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+    <ul class="legend">
+      <li><span class="sw b1" aria-hidden="true"></span>77.5¢ → back to players as prizes</li>
+      <li><span class="sw b2" aria-hidden="true"></span>12.5¢ → backers who fund the pool</li>
+      <li><span class="sw b3" aria-hidden="true"></span>10¢ → referrers who grow the game</li>
+    </ul>
+    <div class="grid">
+      <div class="card"><h3>~77.5% back to players</h3><p class="muted">Traditional operators return about 50% or less — and many government lotteries keep up to 70%. Megapot returns ~77.5% of ticket sales as prizes.</p></div>
+      <div class="card"><h3>100% stays in the game</h3><p class="muted">Every cent of ticket sales goes to players, backers, or referrers. No state program, no corporate operator overhead taking a bite.</p></div>
+      <div class="card"><h3>It's a lottery, not an investment</h3><p class="muted">Megapot says it up front: expected return is about $0.775 per $1 — there is a house edge. Call the difference ~22.5¢ of premium-grade daydream fuel. Cheaper than the fancy candle.</p></div>
+    </div>
+    <p class="mt"><strong>18+ only. Play responsibly.</strong> Set a fun budget, keep it fun — and if it stops being fun, stop.</p>
+  </div>
+</section>
+
+<section id="receipts" aria-labelledby="rec-h">
+  <div class="wrap">
+    <p class="eyebrow">Round 7 · The receipts</p>
+    <h2 id="rec-h">Don't trust the hype. Check the chain.</h2>
+    <p>Winning numbers come from <strong>Pyth Network's verifiable randomness</strong> — not from a guy named Randy with a ping-pong machine. No one, Megapot included, can predict or massage them. Every drawing, ticket, and payout is recorded on-chain (on Base), in public, forever.</p>
+    <ul class="chips">
+      <li class="chip">Running since July 2024</li>
+      <li class="chip">$200M+ through drawings</li>
+      <li class="chip gold">19 jackpot winners — and counting</li>
+      <li class="chip">Players in 160+ countries</li>
+      <li class="chip">Licensed gaming operator</li>
+      <li class="chip">Audited 4 times</li>
+    </ul>
+    <p class="muted">Behind the curtain: a $5M pre-seed led by Dragonfly, joined by Coinbase Ventures, Bankless Ventures, and founders of FanDuel (Nigel Eccles), Flutter/Betfair (Josh Hannah), and MyPrize (Zach Bruch).</p>
+    <ul class="links">
+      <li><a href="https://megapot.io/results" rel="noopener">See every drawing's results →</a></li>
+      <li><a href="https://docs.megapot.io" rel="noopener">Read the docs (odds, tiers, payout math) →</a></li>
+      <li><a href="https://basescan.org/address/0x3bAe643002069dBCbcd62B1A4eb4C4A397d042a2" rel="noopener">Poke the jackpot contract yourself →</a></li>
+      <li><a href="https://docs.megapot.io/learn/using-smart-contracts#security-audits" rel="noopener">Read the four security audits →</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="faq alt" aria-labelledby="faq-h">
+  <div class="wrap">
+    <p class="eyebrow">Audience questions</p>
+    <h2 id="faq-h">Frequently asked, honestly answered</h2>
+    <details>
+      <summary>Do I need to understand crypto?</summary>
+      <div class="a"><p class="muted">No. Sign up with an email and a built-in account is created for you — no seed phrases, no homework. If you already have a wallet, connect it and feel superior. Tickets cost $1 in USDC, which is a dollar wearing a lanyard.</p></div>
+    </details>
+    <details>
+      <summary>When are the drawings?</summary>
+      <div class="a"><p class="muted">Every single day, with results posted immediately after. No waiting for a Saturday-night broadcast, no envelope, no drumroll delay.</p></div>
+    </details>
+    <details>
+      <summary>Seriously — will I win?</summary>
+      <div class="a"><p class="muted">Per Megapot's published odds, about 1 in 4 tickets wins <em>something</em> — usually a small something. The jackpot itself runs about 1 in 1.4 million at a bonusball range of 10. Most tickets lose. Play because it's fun, not because it's a plan.</p></div>
+    </details>
+    <details>
+      <summary>Can the drawing be rigged?</summary>
+      <div class="a"><p class="muted">Megapot's winning numbers come from Pyth Network verifiable randomness — no one, including Megapot, can predict or manipulate them. Every drawing, ticket, and payout is recorded on-chain where anyone can check, and the contracts have been audited four times. <a href="https://docs.megapot.io" rel="noopener">Verify in the docs</a>.</p></div>
+    </details>
+    <details>
+      <summary>What happens if I win?</summary>
+      <div class="a"><p class="muted">First: congratulations, statistical marvel. Winnings are instantly claimable to your own wallet — no paperwork, no waiting weeks, no giant novelty check (sorry). Then you may inform your group chat.</p></div>
+    </details>
+    <details>
+      <summary>Should I buy more tickets to win back a loss?</summary>
+      <div class="a"><p class="muted">No — and Megapot's own docs back this up: expected return is about $0.775 per $1. It's entertainment with a jackpot attached, not a strategy. Set a fun budget and stick to it. 18+ only; if it stops being fun, stop.</p></div>
+    </details>
+    <details>
+      <summary>Is this site Megapot?</summary>
+      <div class="a"><p class="muted">Nope — {{SITE_NAME}} is an independent referral site. Think of us as the enthusiastic person outside the theater telling you the show is great. All plays, tickets, and payouts happen on megapot.io, on Megapot's audited contracts.</p></div>
+    </details>
+  </div>
+</section>
+
+<section class="finale confetti" aria-labelledby="fin-h">
+  <div class="wrap center">
+    <p class="eyebrow mid">Final answer</p>
+    <h2 id="fin-h">Okay, dreamer. Your move.</h2>
+    <p>Today — like every day — five numbers and a bonusball get drawn, and winners get paid from a <strong>$1,000,000+ daily prize pool</strong>. For one dollar, one set of them can be yours.</p>
+    <p class="mt"><a class="cta" href="{{INVITE_URL}}" rel="noopener">Play for $1 on Megapot</a></p>
+    <p class="fn">18+ · Play responsibly · Most tickets lose — the daydream never does.</p>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <p><strong>{{SITE_NAME}}</strong> is an independent referral site — all plays happen on <a href="https://megapot.io" rel="noopener">megapot.io</a>. We're just the hype squad at the door.</p>
+    <p>{{DISCLAIMER}}</p>
+    <p>Odds, payout percentages, and fairness claims above are Megapot's published figures — see <a href="https://docs.megapot.io" rel="noopener">docs.megapot.io</a> and <a href="https://megapot.io/results" rel="noopener">live results</a>.</p>
+    <p>18+ only. Play responsibly. It's a lottery: most tickets lose, and the fun should only ever cost a dollar you'd happily spend on a daydream.</p>
+  </div>
+</footer>
+{{CLICK_BEACON}}
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{{SITE_NAME}} — an independent guide to Megapot, the daily $1 lottery</title>
+<meta name="description" content="How Megapot's daily $1 lottery works, what the odds really are, where every cent goes, and how to verify all of it yourself. An independent explainer.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+--paper:#faf8f1;--card:#f1ecdd;--ink:#211d14;--muted:#5b5443;--rule:#ddd5c2;
+--accent:var(--brand);--brand:#7c2230;
+{{THEME_VARS}}
+}
+@media (prefers-color-scheme:dark){
+:root{--paper:#181510;--card:#221e14;--ink:#ece5d3;--muted:#b3aa96;--rule:#3b3527;
+--accent:color-mix(in srgb,var(--brand) 40%,#f2ebd9)}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--paper);color:var(--ink);border-top:5px solid var(--brand);
+font:400 1.0625rem/1.7 Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+.prose{max-width:66ch}
+a{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1.5px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2.5px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px;border-radius:2px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:14px 20px;z-index:9;text-decoration:none;font-family:var(--sans)}
+.skip:focus-visible{left:8px}
+.mast{padding:24px 0 0;border-bottom:3px double var(--ink);margin-bottom:8px}
+.mast .brand{font-weight:700;font-size:1.4rem;letter-spacing:.01em}
+.mast .tag{font-style:italic;color:var(--muted);font-size:.95rem;margin:.15rem 0 .6rem}
+nav a{display:inline-block;padding:17px 10px 17px 0;margin-right:8px;font:600 .74rem/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+.kick{font:700 .72rem/1.5 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .7rem}
+h1{font-size:clamp(2.2rem,5.5vw,3.5rem);line-height:1.08;font-weight:700;letter-spacing:-.012em;margin:0 0 1.1rem;max-width:24ch}
+.lede{font-size:1.22rem;line-height:1.62;max-width:58ch}
+h2{font-size:clamp(1.55rem,3vw,2.05rem);line-height:1.15;margin:0 0 1rem;max-width:30ch}
+h3{font-size:1.17rem;margin:1.7rem 0 .5rem}
+p{margin:0 0 1rem}
+.muted{color:var(--muted)}
+.fine{font-size:.88rem;color:var(--muted);max-width:60ch}
+.cta{display:inline-block;background:var(--brand);color:#fff;font:700 1rem/1.1 var(--sans);padding:16px 28px;border-radius:4px;text-decoration:none}
+.cta:hover{filter:brightness(1.12)}
+.ctarow{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:1.7rem 0 .9rem}
+.more{font:600 .95rem/1.2 var(--sans);padding:14px 4px;display:inline-block}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1px;background:var(--rule);border-block:1px solid var(--rule);margin:2.4rem 0 .5rem}
+.stat{background:var(--paper);padding:18px 16px 16px}
+.stat .n{display:block;font-size:1.9rem;font-weight:700;line-height:1.15;letter-spacing:-.01em}
+.stat .l{display:block;font:600 .71rem/1.45 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+section{padding:52px 0;border-top:1px solid var(--rule)}
+.hero{padding:54px 0 40px;border-top:0}
+.warn{border:1px solid var(--rule);border-left:4px solid var(--brand);background:var(--card);padding:15px 18px;margin:1.9rem 0 0;max-width:62ch}
+.warn p{margin:0;font-size:.95rem}
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:1.9rem 0 .4rem;max-width:760px}
+.vs>div{background:var(--card);padding:20px 20px 16px}
+.vs .n{font-size:2.3rem;font-weight:700;display:block;line-height:1.1}
+.steps{list-style:none;max-width:66ch;counter-reset:step}
+.steps li{padding:1.15rem 0 1.05rem 3.5rem;position:relative;border-top:1px solid var(--rule);counter-increment:step}
+.steps li::before{content:counter(step);position:absolute;left:0;top:1.15rem;width:2.2rem;height:2.2rem;border:1.5px solid var(--accent);color:var(--accent);border-radius:50%;display:grid;place-items:center;font:700 1rem var(--sans)}
+.steps b{display:block;font-size:1.1rem;margin-bottom:.15rem}
+.pull{border-left:3px solid var(--accent);padding:.35rem 0 .35rem 1.2rem;margin:1.9rem 0;font-size:1.3rem;line-height:1.45;font-style:italic;max-width:34ch}
+.bar{display:flex;height:16px;border-radius:8px;overflow:hidden;margin:1.7rem 0 .9rem;max-width:680px}
+.s1{background:var(--brand)}.s2{background:color-mix(in srgb,var(--brand) 45%,var(--paper))}.s3{background:color-mix(in srgb,var(--ink) 32%,var(--paper))}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;font:600 .8rem/1.5 var(--sans);color:var(--muted);max-width:680px;list-style:none}
+.legend i{width:.85em;height:.85em;display:inline-block;border-radius:2px;margin-right:.45em}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);margin:1.7rem 0 .6rem}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:.97rem}
+caption{text-align:left;font:600 .76rem/1.5 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:12px 14px 10px}
+th,td{padding:12px 14px;border-top:1px solid var(--rule);text-align:left;vertical-align:top}
+thead th{font:700 .73rem/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-top:0}
+thead th.mp{color:var(--accent)}
+td.mp{background:var(--card);font-weight:600}
+tbody th{font-weight:600;font-style:italic}
+.checks{list-style:none;max-width:66ch}
+.checks li{padding:.95rem 0 .85rem 2.2rem;position:relative;border-top:1px solid var(--rule)}
+.checks li::before{content:"✓";position:absolute;left:.15rem;top:.95rem;color:var(--accent);font-weight:700}
+details{border-top:1px solid var(--rule);max-width:70ch}
+details:last-of-type{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;padding:16px 6px;font-weight:700;font-size:1.05rem}
+summary::marker{color:var(--accent)}
+summary:hover{color:var(--accent)}
+details p{margin:0 0 .9rem;padding:0 6px;max-width:62ch}
+details p:last-child{padding-bottom:1.2rem}
+footer{border-top:3px double var(--ink);margin-top:64px;padding:34px 0 64px;font-size:.9rem;color:var(--muted)}
+footer p{margin:0 0 .75rem;max-width:78ch}
+footer .brand{color:var(--ink);font-weight:700;font-size:1.1rem}
+</style>
+</head>
+<body>
+<!-- {{PAGE_NOTE}} -->
+<a class="skip" href="#main">Skip to main content</a>
+<header class="mast wrap">
+<p class="brand">{{SITE_NAME}}</p>
+<p class="tag">An independent reader's guide to Megapot, the daily $1 lottery</p>
+<nav aria-label="Sections">
+<a href="#problem">The problem</a>
+<a href="#how">How it works</a>
+<a href="#odds">The odds</a>
+<a href="#money">The money</a>
+<a href="#compare">Compared</a>
+<a href="#verify">Verify it</a>
+<a href="#faq">Questions</a>
+</nav>
+</header>
+<main id="main">
+<section class="hero wrap">
+<p class="kick">The lottery, re-reported</p>
+<h1>{{TAGLINE}}</h1>
+<p class="lede">Megapot runs a lottery with a drawing every day, tickets at $1, and — unusually for this industry — a habit of publishing everything: the odds, the payout rules, where each dollar goes, and the result of every drawing. This page explains how it works, what the catch is (there is one; it's called the house edge), and how to check every claim yourself.</p>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Play today's drawing</a>
+<a class="more" href="#problem">Or read the whole story first ↓</a>
+</div>
+<p class="fine">Free to sign up with just your email · takes about a minute.</p>
+<div class="stats">
+<div class="stat"><span class="n">$1,000,000+</span><span class="l">In daily prizes</span></div>
+<div class="stat"><span class="n">$1</span><span class="l">Per ticket, every drawing</span></div>
+<div class="stat"><span class="n">1 in 4</span><span class="l">Tickets win something*</span></div>
+<div class="stat"><span class="n">Daily</span><span class="l">Drawings, results published immediately</span></div>
+</div>
+<p class="fine">*Megapot's published odds — examined in detail below.</p>
+<div class="warn">
+<p><strong>Fair warning:</strong> it is still a lottery. Megapot's own published figure puts the expected return at about 77.5 cents per $1 ticket, which means most tickets lose. Play for fun, with money you'd happily spend on a night out. 18+ only.</p>
+</div>
+</section>
+
+<section id="problem" class="wrap">
+<p class="kick">The premise</p>
+<h2>The problem with the lottery you grew up with</h2>
+<div class="prose">
+<p>A traditional lottery is a splendid business for everyone except the players. Of every dollar spent on tickets, roughly fifty cents — often less — comes back as prizes, and many government lotteries keep as much as seventy cents of each dollar. The drawing happens on television, the accounting happens elsewhere, and you are asked to take both on faith.</p>
+<p>Megapot's counter-proposal is easy to state and, more unusually, possible to audit: return about 77.5% of ticket sales to players, publish the odds and payout rules in full, and run every drawing in a way anyone can verify. The rest of this page walks through that proposition — including the parts a sales pitch would leave out.</p>
+</div>
+<div class="vs">
+<div><span class="n">≈50%</span><span class="l">Of ticket sales returned to players by traditional lotteries — often less</span></div>
+<div><span class="n">≈77.5%</span><span class="l">Returned to players by Megapot, per its published economics</span></div>
+</div>
+</section>
+
+<section id="how" class="wrap">
+<p class="kick">The mechanics</p>
+<h2>How it works, in four steps</h2>
+<ol class="steps">
+<li><b>Sign up with just your email.</b>That is the entire requirement — no downloads, nothing technical to learn. An account is created for you on the spot.</li>
+<li><b>Pick five numbers from 1 to 30, plus one bonus number.</b>Prefer not to deliberate? Quick Pick chooses for you. Every ticket costs $1.</li>
+<li><b>There is one drawing every day.</b>Winning numbers are drawn daily, and every drawing's results are published immediately for anyone to review.</li>
+<li><b>If you win, collecting is instant.</b>No waiting weeks, no office to visit. Winnings are yours to collect the moment results are in — instantly, with no claim forms.</li>
+</ol>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Try a $1 ticket</a>
+<span class="fine">All you need is an email address.</span>
+</div>
+</section>
+
+<section id="odds" class="wrap">
+<p class="kick">The numbers</p>
+<h2>The odds, printed in full</h2>
+<div class="prose">
+<p><strong>Ten ways to win.</strong> Prize tiers run from matching only the bonus number all the way up to matching all five numbers plus the bonus. By Megapot's published odds, 1 in 4 tickets wins something; the lower tiers are, naturally, where most of those wins occur.</p>
+<p><strong>And the jackpot?</strong> Matching five of thirty numbers is roughly a 1-in-142,506 proposition, per Megapot's docs. Add the bonus number, and jackpot odds land between about 1 in 713,000 and 1 in 1.4 million, depending on that drawing's bonus-number range. For scale, Powerball's jackpot sits near 1 in 292 million — by Megapot's own comparison, its jackpot odds are roughly 205 times better.</p>
+<h3>Why the bonus range moves</h3>
+<p>When the prize pool grows, the bonus-number range widens and the jackpot gets harder; when the pool is smaller, the range narrows and it gets easier. That is what keeps the prize fund sustainable — and it is the kind of detail most lotteries would rather not put in writing. Megapot puts it in its documentation.</p>
+<h3>How prizes are paid</h3>
+<p>Every winning ticket collects a guaranteed minimum payout for its tier, plus a share of a premium pool divided across the tiers — the jackpot tier alone takes 33% of it. One wrinkle worth knowing: tickets with identical number combinations share their premium between them, so picking less-popular numbers can mean a larger payout. Your lucky birthday numbers are, alas, everyone else's too.</p>
+</div>
+<p class="pull"><strong>1 in 4</strong> tickets wins one of ten prize tiers — Megapot's published odds.</p>
+</section>
+
+<section id="money" class="wrap">
+<p class="kick">The economics</p>
+<h2>Where the money actually goes</h2>
+<div class="prose">
+<p>Megapot publishes the arithmetic of every dollar of ticket sales. About 77.5 cents returns to players as prizes over time. About 12.5 cents goes to the backers whose deposits fund the prize pool. The remaining 10 cents goes to the people who bring new players in. Nothing is skimmed for a state program or a corporate operator's overhead — 100% of ticket sales stays inside the game, among the people who play it and fund it.</p>
+</div>
+<div class="bar" aria-hidden="true"><span class="s1" style="flex:775"></span><span class="s2" style="flex:125"></span><span class="s3" style="flex:100"></span></div>
+<ul class="legend">
+<li><i class="s1" aria-hidden="true"></i>77.5¢ — prizes to players</li>
+<li><i class="s2" aria-hidden="true"></i>12.5¢ — the backers who fund the prize pool</li>
+<li><i class="s3" aria-hidden="true"></i>10¢ — the people who grow the community</li>
+</ul>
+<div class="prose">
+<h3>So what's the catch?</h3>
+<p>The catch is the one every honest lottery must admit: a house edge. If about 77.5 cents of each dollar comes back as prizes, the expected return on a $1 ticket is about 77.5 cents — a figure Megapot states plainly in its own documentation rather than leaving you to work out. Play long enough, and the average player will spend more than they win. That is a considerably better arrangement than the roughly 50-cent return of a traditional lottery, but it is an edge all the same. Treat tickets as entertainment with a daily chance of a very good day — not as a strategy.</p>
+</div>
+<p class="pull"><strong>$0.775</strong> — expected return per $1 ticket, per Megapot's docs. A lottery, not an investment.</p>
+<div class="ctarow"><a class="cta" href="{{INVITE_URL}}" rel="noopener">Play with your eyes open — $1</a></div>
+</section>
+
+<section id="compare" class="wrap">
+<p class="kick">Side by side</p>
+<h2>Megapot vs. the lottery at the corner store</h2>
+<div class="tablewrap">
+<table>
+<caption>Figures as published by Megapot; Powerball jackpot odds ≈ 1 in 292 million</caption>
+<thead><tr><th scope="col">&nbsp;</th><th scope="col" class="mp">Megapot</th><th scope="col">A traditional lottery</th></tr></thead>
+<tbody>
+<tr><th scope="row">A ticket costs</th><td class="mp">$1, every drawing</td><td>Varies by game</td></tr>
+<tr><th scope="row">Returned to players</th><td class="mp">≈77.5% of ticket sales (published)</td><td>≈50% or less; many keep up to 70%</td></tr>
+<tr><th scope="row">Drawings</th><td class="mp">One every day, results published immediately</td><td>Depends on the game</td></tr>
+<tr><th scope="row">Jackpot odds</th><td class="mp">≈1 in 713,000 to 1 in 1.4 million</td><td>Powerball: ≈1 in 292 million</td></tr>
+<tr><th scope="row">Odds of any prize</th><td class="mp">1 in 4 tickets (published)</td><td>Not usually advertised</td></tr>
+<tr><th scope="row">Collecting winnings</th><td class="mp">Instant — winnings are yours immediately</td><td>Claim forms; payouts can take weeks</td></tr>
+<tr><th scope="row">Checking the math</th><td class="mp">Odds, payout rules and every result published for anyone to verify</td><td>You take the broadcast's word for it</td></tr>
+<tr><th scope="row">Where the rest goes</th><td class="mp">Stays in the game — prize funders and community</td><td>State programs and operator overhead</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="verify" class="wrap">
+<p class="kick">Trust, then verify</p>
+<h2>&ldquo;How do I know it's not rigged?&rdquo;</h2>
+<div class="prose"><p>A fair question — the correct question, in fact. Megapot's answer comes in four parts, each of which you can check without asking anyone's permission:</p></div>
+<ul class="checks">
+<li><b>The draw can't be steered.</b> Winning numbers come from an independent public randomness service whose output anyone can verify — and which, per Megapot's documentation, no one (Megapot included) can predict or influence.</li>
+<li><b>The records are public.</b> Every ticket, drawing, and payout is written to a permanent public record rather than a private database. Past results are published at <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a>.</li>
+<li><b>The system is audited.</b> It has been independently audited four times — the reports are linked from <a href="https://docs.megapot.io" rel="noopener">Megapot's documentation</a>.</li>
+<li><b>The operator is licensed.</b> Megapot is a licensed gaming operator, with players in more than 160 countries.</li>
+</ul>
+<div class="stats">
+<div class="stat"><span class="n">July 2024</span><span class="l">Running daily since</span></div>
+<div class="stat"><span class="n">$200,000,000+</span><span class="l">Run through drawings to date</span></div>
+<div class="stat"><span class="n">19</span><span class="l">Jackpot winners so far — and counting</span></div>
+<div class="stat"><span class="n">160+</span><span class="l">Countries with players</span></div>
+</div>
+<div class="prose" style="margin-top:1.4rem">
+<p>Behind the company sits a $5 million pre-seed round led by Dragonfly and joined by Coinbase Ventures, Bankless Ventures, and the founders of FanDuel (Nigel Eccles), Betfair (Josh Hannah), and MyPrize (Zach Bruch). An investor list proves nothing on its own — but veteran gambling-industry founders are not in the habit of lending their names to rigged games.</p>
+</div>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">See it for yourself — play a ticket</a>
+</div>
+</section>
+
+<section id="faq" class="wrap">
+<p class="kick">Due diligence</p>
+<h2>Questions a sensible skeptic would ask</h2>
+<details>
+<summary>What's the catch?</summary>
+<p>A house edge. Megapot's published economics put the expected return at about 77.5 cents per $1 ticket, so most tickets lose money, and the average long-run player spends more than they win. It's a materially better deal than the roughly 50% return of traditional lotteries — a comparison Megapot itself draws — but it is a lottery, not an investment.</p>
+</details>
+<details>
+<summary>Will I actually win anything?</summary>
+<p>By Megapot's published odds, 1 in 4 tickets wins one of ten prize tiers, and wins in the lower tiers are far more common than the jackpot. Every winning ticket receives a guaranteed minimum payout for its tier plus a share of the premium pool. That still means three losing tickets for every winner — plan on it.</p>
+</details>
+<details>
+<summary>How do I know the drawings are fair?</summary>
+<p>The winning numbers come from a public randomness service that, per Megapot's documentation, no one — including Megapot — can predict or influence. Every drawing, ticket, and payout is written to a permanent public record, the system has been audited four times, and the operator is licensed. Or skip the summary and check the record yourself at <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a>.</p>
+</details>
+<details>
+<summary>How do I collect if I win?</summary>
+<p>You don't &ldquo;collect&rdquo; in the traditional sense. Winnings are yours instantly — no claim forms, no waiting weeks. Results are published immediately after each daily drawing.</p>
+</details>
+<details>
+<summary>What do I need to get started?</summary>
+<p>An email address and $1. Sign up, pick five numbers from 1 to 30 plus a bonus number — or let Quick Pick choose — and you're in that day's drawing.</p>
+</details>
+<details>
+<summary>Can I play where I live?</summary>
+<p>Megapot is a licensed operator with players in more than 160 countries, but availability depends on your local rules. The signup page at megapot.io will tell you where you stand.</p>
+</details>
+<details>
+<summary>What is this site's relationship to Megapot?</summary>
+<p>{{SITE_NAME}} is an independent referral site: we explain the game and link you to it. All play, payments, and payouts happen on megapot.io, which is operated by Megapot — not by us. We never handle your money, and we don't run the drawings.</p>
+</details>
+</section>
+
+<section id="play" class="wrap">
+<p class="kick">The short version</p>
+<h2>If you were ever going to enjoy a lottery, this is the one to enjoy</h2>
+<div class="prose">
+<p>A $1 ticket. A drawing every day, with $1,000,000+ in daily prizes. Odds and economics published in full, results anyone can verify, and a house edge the operator admits in writing. Enjoy it the way it deserves to be enjoyed — occasionally, cheerfully, and with fun money.</p>
+</div>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Play today's drawing at megapot.io</a>
+</div>
+<p class="fine">18+ only · Most tickets lose · Play responsibly</p>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<p class="brand">{{SITE_NAME}}</p>
+<p>{{SITE_NAME}} is an independent referral site, not Megapot. All play happens on <a href="https://megapot.io" rel="noopener">megapot.io</a>, which is operated by Megapot.</p>
+<p>{{DISCLAIMER}}</p>
+<p>18+ only. A lottery is entertainment, not income: most tickets lose. Play responsibly, with money you can afford to spend on fun.</p>
+<p>Sources: <a href="https://docs.megapot.io" rel="noopener">docs.megapot.io</a> · <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a> — all odds, percentages, and figures on this page are as published by Megapot.</p>
+</div>
+</footer>
+{{CLICK_BEACON}}
+</body>
+</html>

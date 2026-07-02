@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>{{SITE_NAME}} — due diligence + daily on-chain lottery</title>
+<meta name="description" content="Independent Megapot referral page: verified contract addresses on Base, the real odds math, the full money flow, and the house edge stated up front. $1 USDC tickets, daily drawings.">
+<style>
+:root{
+--brand:#3ddc84;
+--bg:#0a0f14;--bg2:#10161d;--bg3:#0d1219;
+--ink:#dfe7ee;--mut:#9fb0bf;--line:#25313d;
+--good:#6fe3a1;--amb:#f2c94c;--red:#ff9b9b;--link:#85c8ff;
+--cta-ink:#04140b;--seg2:#5b7183;
+--focus:color-mix(in srgb,var(--brand) 60%,var(--ink));
+--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+}
+:root{{{THEME_VARS}}}
+@media (prefers-color-scheme:light){:root{
+--bg:#f3f5f7;--bg2:#ffffff;--bg3:#e9edf1;
+--ink:#141f29;--mut:#495a67;--line:#c9d3db;
+--good:#0a7042;--amb:#8a5800;--red:#b02a20;--link:#075baf;
+--seg2:#8fa3b3;
+--focus:color-mix(in srgb,var(--brand) 60%,var(--ink));
+}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 14px/1.7 var(--mono);-webkit-text-size-adjust:100%}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+a{color:var(--link);text-decoration:underline;text-underline-offset:3px;border-radius:4px}
+a:focus-visible,.cta:focus-visible,summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:99;background:var(--brand);color:var(--cta-ink);padding:12px 16px;font-weight:700;text-decoration:none}
+header{position:sticky;top:0;z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+.hb{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:6px 0}
+.logo{font-weight:700;color:var(--ink);text-decoration:none;padding:12px 0;letter-spacing:.02em}
+.logo b{color:var(--good)}
+nav{margin-left:auto;display:flex;flex-wrap:wrap}
+nav a{color:var(--mut);text-decoration:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:15px 9px;display:inline-block}
+nav a:hover{color:var(--ink)}
+.age{border:1px solid var(--line);color:var(--mut);font-size:11px;padding:4px 8px;border-radius:6px;align-self:center}
+section{padding:54px 0;border-top:1px solid var(--line)}
+.hero{border-top:0;padding-top:44px}
+h1{font-size:clamp(28px,5.5vw,46px);line-height:1.12;margin:12px 0 16px;letter-spacing:-.5px}
+h2{font-size:16px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+h2 .no{color:var(--good)}
+h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 8px}
+p{max-width:70ch}
+.eb{color:var(--good);font-size:12px;letter-spacing:.06em;margin:0}
+.lead{font-size:15.5px;color:var(--ink)}
+.sub{color:var(--mut);margin-top:2px}
+.mut{color:var(--mut)}
+.good{color:var(--good)}
+.red{color:var(--red)}
+.term{background:var(--bg3);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:24px 0}
+.tbar{display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.tbar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.tbar i:first-child{background:var(--brand)}
+.term pre{margin:0;padding:15px 16px;overflow-x:auto;font-size:12.5px;line-height:1.9}
+.cur{display:inline-block;width:9px;height:15px;background:var(--good);vertical-align:-2px;animation:bl 1.1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.cta{display:inline-block;background:var(--brand);color:var(--cta-ink);font-weight:700;font-size:14px;letter-spacing:.05em;text-transform:uppercase;padding:16px 26px;border-radius:10px;text-decoration:none;line-height:1.1}
+.cta:hover{filter:brightness(1.08)}
+.ghost{display:inline-block;border:1px solid var(--line);color:var(--ink);font-size:13px;padding:15px 20px;border-radius:10px;text-decoration:none;line-height:1.1}
+.ghost:hover{border-color:var(--mut)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:26px 0 10px}
+.fine{font-size:11.5px;color:var(--mut);margin:8px 0 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:28px 0 0}
+.stats div{background:var(--bg2);padding:13px 14px}
+.stats b{display:block;font-size:15px}
+.stats span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:20px 0}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+th{text-align:left;color:var(--mut);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px;padding:10px 12px;background:var(--bg3);border-bottom:1px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--bg2)}
+tr:last-child td{border-bottom:0}
+td.n{text-align:right;white-space:nowrap}
+.addr{word-break:break-all;font-size:12px}
+.dead td{color:var(--mut)}
+.dead .x{text-decoration:line-through}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:20px 0}
+.call{border-left:4px solid var(--amb)}
+.call h3{color:var(--amb)}
+.callg{border-left:4px solid var(--good)}
+.big{font:800 clamp(2.5rem,7vw,3.9rem)/1.05 var(--mono);letter-spacing:-.02em;color:var(--good);margin:26px 0 2px}
+.bar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line);margin:20px 0 10px}
+.bar i{display:block}
+.b1{width:77.5%;background:var(--good)}
+.b2{width:12.5%;background:var(--seg2)}
+.b3{width:10%;background:var(--amb)}
+.leg{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin:0 0 6px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+ul{padding-left:20px;max-width:72ch}
+li{margin:6px 0}
+.chk{list-style:none;padding:0}
+.chk li::before{content:"[x] ";color:var(--good);font-weight:700}
+details{border:1px solid var(--line);border-radius:10px;background:var(--bg2);margin:10px 0}
+summary{padding:15px 18px;cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--good);flex:none}
+details[open] summary::after{content:"–"}
+details div{padding:0 18px 15px}
+details p{margin:0 0 8px}
+footer{border-top:1px solid var(--line);padding:36px 0 46px;font-size:12px;color:var(--mut)}
+footer p{max-width:none}
+footer a{display:inline-flex;min-height:44px;align-items:center}
+.ctr{text-align:center;margin:30px 0 0}
+#go .cta{font-size:16px;padding:19px 34px}
+</style>
+</head>
+<body>
+<!-- {{PAGE_NOTE}} -->
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap hb">
+    <a class="logo" href="#top"><b>▚</b> {{SITE_NAME}}</a>
+    <nav aria-label="Sections">
+      <a href="#verify">Verify</a>
+      <a href="#flow">$1 flow</a>
+      <a href="#odds">Odds</a>
+      <a href="#tiers">Tiers</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <span class="age">18+</span>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eb">// independent due-diligence report · daily on-chain lottery · Base mainnet</p>
+    <h1>{{TAGLINE}}</h1>
+    <p class="lead">Megapot is a $1-per-ticket USDC lottery on Base with a $1,000,000+ daily prize pool, drawn every day using Pyth Network verifiable entropy (per Megapot). This page is the due diligence you were going to skip: contract addresses, the actual odds math, the full money flow — and the house edge, stated before you buy.</p>
+    <div class="term">
+      <div class="tbar" aria-hidden="true"><i></i><i></i><i></i></div>
+<pre><span class="good">$</span> verify --contract 0x3bAe…42a2      <span class="mut">// Base mainnet · deployed · linked below</span>
+<span class="good">$</span> entropy --source pyth_network      <span class="mut">// verifiable randomness, per Megapot</span>
+<span class="good">$</span> audits --count 4                   <span class="mut">// linked in §01</span>
+<span class="good">$</span> ev --per-dollar <span class="red">≈ $0.775</span>           <span class="mut">// negative. it's a lottery. keep reading.</span>
+<span class="good">$</span> <span class="cur" aria-hidden="true"></span></pre>
+    </div>
+    <div class="row">
+      <a class="cta" href="{{INVITE_URL}}" rel="noopener">Buy a ticket on Megapot ↗</a>
+      <a class="ghost" href="#verify">Read the report first ↓</a>
+    </div>
+    <p class="fine">Routes to megapot.io · 18+ · most tickets lose — play with money you can afford to lose.</p>
+    <div class="stats">
+      <div><b>Jul 2024</b><span>running since</span></div>
+      <div><b>$200M+</b><span>through drawings</span></div>
+      <div><b>19</b><span>jackpot winners, so far</span></div>
+      <div><b>160+</b><span>countries with players</span></div>
+      <div><b>4</b><span>security audits</span></div>
+      <div><b>Licensed</b><span>gaming operator</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="verify">
+  <div class="wrap">
+    <h2><span class="no">§01</span> Verify, don't trust</h2>
+    <p>You don't have to trust this page, and you don't have to trust Megapot either. The whole stack is public. Click through before you spend a dollar:</p>
+    <div class="tw"><table>
+      <thead><tr><th scope="col">Item</th><th scope="col">Detail</th><th scope="col">Check it</th></tr></thead>
+      <tbody>
+      <tr><td>Jackpot contract</td><td class="addr">Base mainnet · 0x3bAe643002069dBCbcd62B1A4eb4C4A397d042a2</td><td><a href="https://basescan.org/address/0x3bAe643002069dBCbcd62B1A4eb4C4A397d042a2" rel="noopener">BaseScan ↗</a></td></tr>
+      <tr><td>Ticket NFT</td><td class="addr">ERC-721 · JackpotTicketNFT · 0x48FfE35AbB9f4780a4f1775C2Ce1c46185b366e4</td><td><a href="https://basescan.org/address/0x48FfE35AbB9f4780a4f1775C2Ce1c46185b366e4" rel="noopener">BaseScan ↗</a></td></tr>
+      <tr><td>Randomness</td><td>Pyth Network verifiable entropy — per Megapot, no one (including Megapot) can predict or manipulate a drawing</td><td><a href="https://docs.megapot.io" rel="noopener">docs ↗</a></td></tr>
+      <tr><td>Audits</td><td>4 security audits of the smart contracts</td><td><a href="https://docs.megapot.io/learn/using-smart-contracts#security-audits" rel="noopener">audit list ↗</a></td></tr>
+      <tr><td>Results</td><td>Every drawing, ticket and payout recorded on-chain; results post immediately after each drawing</td><td><a href="https://megapot.io/results" rel="noopener">results ↗</a></td></tr>
+      </tbody>
+    </table></div>
+    <p class="sub">Your ticket is an ERC-721 minted to your wallet — not a row in someone's database. Winnings are instantly claimable to your own wallet. No paperwork, no "processing period."</p>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <h2><span class="no">§02</span> Where each $1 goes</h2>
+    <p>Megapot publishes its full economics in its docs. We're just putting them in a table where you can't miss them.</p>
+    <div class="bar" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <p class="leg"><span><i class="b1"></i>prizes ~77.5%</span><span><i class="b2"></i>backers ~12.5%</span><span><i class="b3"></i>referrers ~10%</span></p>
+    <div class="tw"><table>
+      <thead><tr><th scope="col">Destination</th><th scope="col">Share of each $1</th><th scope="col">What it is</th></tr></thead>
+      <tbody>
+      <tr><td>Prize pool → players</td><td class="n">~77.5%</td><td>Returned to winners over time</td></tr>
+      <tr><td>Backers</td><td class="n">~12.5%</td><td>Deposit USDC that funds the prize pool — they "earn as the house"</td></tr>
+      <tr><td>Referrers</td><td class="n">~10%</td><td>Community referrers who bring players in</td></tr>
+      </tbody>
+    </table></div>
+    <p class="big">≈ $0.775</p>
+    <p class="sub">expected return on every $1 ticket — Megapot's own published number</p>
+    <div class="card call">
+      <h3>The house edge, in writing</h3>
+      <p>Expected return ≈ <strong>$0.775 per $1 ticket</strong>. That is negative EV — and it isn't our estimate, it's from Megapot's own docs. They publish it themselves. It's a lottery, not an investment; anyone selling it as yield is lying to you.</p>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th scope="col">Return to players</th><th scope="col">Rate</th></tr></thead>
+      <tbody>
+      <tr><td>Megapot</td><td class="n">~77.5% back as prizes</td></tr>
+      <tr><td>Traditional operators</td><td class="n">~50% or less</td></tr>
+      <tr><td>Many government lotteries</td><td class="n">keep up to 70% of sales</td></tr>
+      </tbody>
+    </table></div>
+    <p class="sub">Per Megapot's docs, 100% of ticket sales stays inside the ecosystem — players, backers, referrers. No state budget line, no corporate-operator overhead.</p>
+  </div>
+</section>
+
+<section id="odds">
+  <div class="wrap">
+    <h2><span class="no">§03</span> The odds, as actual math</h2>
+    <p>A ticket is 5 numbers picked from 1–30 plus 1 bonusball from a dynamic range that changes per drawing. Here's the combinatorics — check it on a napkin:</p>
+    <div class="term">
+      <div class="tbar" aria-hidden="true"><i></i><i></i><i></i></div>
+<pre>C(30,5) = (30·29·28·27·26) / (5·4·3·2·1) = <span class="good">142,506</span>
+match 5-of-30                → 1 in 142,506
+bonusball range 5   → ×5     → ≈ 1 in 713,000
+bonusball range 10  → ×10    → ≈ 1 in 1.4 million   <span class="mut">// jackpot</span></pre>
+    </div>
+    <p>Why the bonusball range moves, per Megapot: bigger prize pool → wider range → harder jackpot; smaller pool → narrower range → easier jackpot. It keeps the pool sustainable instead of pretending the odds never change.</p>
+    <div class="tw"><table>
+      <thead><tr><th scope="col">Game</th><th scope="col">Jackpot odds</th></tr></thead>
+      <tbody>
+      <tr><td>Megapot (bonusball range 10)</td><td class="n">≈ 1 in 1.4 million</td></tr>
+      <tr><td>Powerball</td><td class="n">≈ 1 in 292 million</td></tr>
+      </tbody>
+    </table></div>
+    <p>That's ~205× better jackpot odds — a comparison Megapot itself publishes. And per Megapot's published odds, <strong>1 in 4 tickets wins something</strong> across the 10 prize tiers. Read that honestly: 3 in 4 tickets win nothing, and most wins are lower-tier.</p>
+    <div class="ctr">
+      <a class="cta" href="{{INVITE_URL}}" rel="noopener">Fine. One ticket ↗</a>
+      <p class="fine">$1 a ticket · daily drawings · results on-chain</p>
+    </div>
+  </div>
+</section>
+
+<section id="tiers">
+  <div class="wrap">
+    <h2><span class="no">§04</span> The prize table — all 12 combos, including the losers</h2>
+    <p>10 winning tiers, from matching just the bonusball up to the jackpot. Every winning ticket gets a <strong>guaranteed minimum</strong> payout for its tier <em>plus</em> a share of a premium pool split by tier — the jackpot tier takes 33% of the premium. Amounts scale with the pool, so we won't print figures that go stale; live numbers are on megapot.io.</p>
+    <div class="tw"><table>
+      <thead><tr><th scope="col">Your match</th><th scope="col">Result</th><th scope="col">Payout structure</th></tr></thead>
+      <tbody>
+      <tr><td>5 + bonusball</td><td class="good">JACKPOT</td><td>guaranteed minimum + 33% of premium pool</td></tr>
+      <tr><td>5</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>4 + bonusball</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>4</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>3 + bonusball</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>3</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>2 + bonusball</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>2</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>1 + bonusball</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr><td>bonusball only</td><td class="good">win</td><td>guaranteed minimum + tier premium share</td></tr>
+      <tr class="dead"><td class="x">1, no bonusball</td><td>no win</td><td>nothing — we print the losing combos too</td></tr>
+      <tr class="dead"><td class="x">0, no bonusball</td><td>no win</td><td>nothing</td></tr>
+      </tbody>
+    </table></div>
+    <p class="sub">Lower tiers have much better odds than the jackpot (per Megapot's docs). Quick Pick is available if you'd rather not choose.</p>
+  </div>
+</section>
+
+<section id="edge">
+  <div class="wrap">
+    <h2><span class="no">§05</span> The duplicate-numbers edge</h2>
+    <div class="card callg">
+      <h3>The only alpha on this page — and it's free</h3>
+      <p>Premium-pool shares get divided between tickets holding the same winning combo. Pick the numbers a crowd picks, and you divide the premium with the crowd. Pick a unique combo, and a win can mean a bigger premium payout — Megapot documents this mechanic itself.</p>
+      <p>It doesn't change your odds of winning. It changes how much you collect <em>when</em> you win. Uncommon numbers are the sharper play; Quick Pick exists for the lazy.</p>
+    </div>
+    <div class="ctr">
+      <a class="cta" href="{{INVITE_URL}}" rel="noopener">Pick your own numbers ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2><span class="no">§06</span> What this page is</h2>
+    <div class="card">
+      <ul>
+        <li><strong>{{SITE_NAME}} is an independent referral front-end.</strong> We are not Megapot.</li>
+        <li>Every buy button here routes to Megapot. Your purchase executes on Megapot's audited contract on Base — the one linked in §01.</li>
+        <li>We never custody funds, never see your keys, and can't touch tickets, drawings, or payouts.</li>
+        <li>New to this? Sign up with an email — Megapot creates a built-in smart account, zero crypto knowledge needed — or connect your own wallet.</li>
+      </ul>
+    </div>
+    <h3>Who's behind Megapot</h3>
+    <p>A licensed gaming operator with players in 160+ countries, running daily drawings since July 2024. Raised a $5M pre-seed led by Dragonfly, with Coinbase Ventures, Bankless Ventures, and the founders of FanDuel (Nigel Eccles), Flutter/Betfair (Josh Hannah) and MyPrize (Zach Bruch). Four smart-contract audits, linked in §01.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2><span class="no">§07</span> Sharp questions</h2>
+    <details>
+      <summary>Who actually holds the prize pool?</summary>
+      <div><p>Backers — they deposit USDC that becomes the prize pool, and every drawing, ticket and payout is recorded on-chain on Base (§01). And it's not us: we never touch funds.</p></div>
+    </details>
+    <details>
+      <summary>Can Megapot — or this site — see the winning numbers early?</summary>
+      <div><p>Per Megapot: no. Winning numbers come from Pyth Network verifiable randomness, which no one — including Megapot — can predict or manipulate. Every drawing, ticket and payout is recorded on-chain on Base, so a rigged draw would be publicly visible. This site has zero involvement in drawings.</p></div>
+    </details>
+    <details>
+      <summary>What happens if nobody hits the jackpot?</summary>
+      <div><p>The pool is funded by backers' USDC deposits, and the bonusball range adjusts with pool size — bigger pool, wider range; smaller pool, narrower range — which per Megapot keeps the pool sustainable. Drawings run every day regardless, and results post immediately at megapot.io/results.</p></div>
+    </details>
+    <details>
+      <summary>Is this +EV? Any real strategy?</summary>
+      <div><p>It is not +EV. Expected return is ≈ $0.775 per $1, per Megapot's own docs. The only genuine play is in §05: unique numbers can raise your premium payout when you win — they don't raise your odds. Treat tickets as entertainment spend, full stop.</p></div>
+    </details>
+    <details>
+      <summary>Do I need a wallet or crypto experience?</summary>
+      <div><p>No. Email signup gives you a built-in smart account with zero crypto knowledge needed. If you're already on-chain, connect your own wallet and the tickets (ERC-721s) mint straight to it.</p></div>
+    </details>
+    <details>
+      <summary>How do winners actually get paid?</summary>
+      <div><p>Winnings are instantly claimable to your own wallet, per Megapot's docs. No forms, no waiting weeks, no "verification department." 19 jackpot winners so far — the full history is on the results page.</p></div>
+    </details>
+    <details>
+      <summary>Why should I believe any number on this page?</summary>
+      <div><p>You shouldn't — that's the point of §01. Every stat here comes from Megapot's published docs (docs.megapot.io) or is checkable on-chain via the linked contracts and results page. Verify first, play second.</p></div>
+    </details>
+  </div>
+</section>
+
+<section id="go">
+  <div class="wrap">
+    <h2><span class="no">§08</span> End of report</h2>
+    <ul class="chk">
+      <li>contract verified on BaseScan (Base mainnet)</li>
+      <li>tickets are ERC-721s in your wallet</li>
+      <li>randomness: Pyth verifiable entropy (per Megapot)</li>
+      <li>4 audits, linked</li>
+      <li>EV stated: ≈ $0.775 per $1 — negative</li>
+      <li>losing combos printed in the prize table</li>
+    </ul>
+    <p>That's the whole report. You've now read more due diligence than almost anyone who buys a ticket. If $1 into a $1,000,000+ daily prize pool at published odds sounds like fun, play. If you came looking for yield — this isn't it, and we told you so in monospace.</p>
+    <div class="ctr">
+      <a class="cta" href="{{INVITE_URL}}" rel="noopener">I read the report — buy a ticket ↗</a>
+      <p class="fine">18+ · play responsibly · most tickets lose.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>{{DISCLAIMER}}</p>
+    <p>{{SITE_NAME}} is an independent referral site — all plays happen on megapot.io, on Megapot's contract. We never hold or touch funds.</p>
+    <p>18+ only. Play responsibly: it's a lottery with a stated house edge, most tickets lose, and you should only spend what you can afford to lose.</p>
+    <p>Sources: <a href="https://docs.megapot.io" rel="noopener">docs.megapot.io</a> · <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a> · <a href="https://basescan.org/address/0x3bAe643002069dBCbcd62B1A4eb4C4A397d042a2" rel="noopener">contract on BaseScan</a>. Odds, economics and fairness statements are Megapot's published figures — verify via §01.</p>
+  </div>
+</footer>
+{{CLICK_BEACON}}</body>
+</html>
