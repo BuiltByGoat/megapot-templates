@@ -13,7 +13,7 @@ odds, the money flow, and the receipts to back it up.
 
 <table>
 <tr>
-<td width="33%" valign="top">
+<td width="25%" valign="top">
 
 **[Formal](templates/formal/)**
 *An independent reader's guide*
@@ -23,7 +23,7 @@ odds, the money flow, and the receipts to back it up.
 General web audience. Editorial, sourced, zero crypto vocabulary. Sells trust.
 
 </td>
-<td width="33%" valign="top">
+<td width="25%" valign="top">
 
 **[Fun](templates/fun/)**
 *The daily daydream machine*
@@ -33,7 +33,7 @@ General web audience. Editorial, sourced, zero crypto vocabulary. Sells trust.
 Everyday dreamers. Playful, colorful, game-show energy. Sells the feeling of the win.
 
 </td>
-<td width="33%" valign="top">
+<td width="25%" valign="top">
 
 **[Degen](templates/degen/)**
 *A jackpot you can verify*
@@ -41,6 +41,16 @@ Everyday dreamers. Playful, colorful, game-show energy. Sells the feeling of the
 <a href="templates/degen/"><img src="templates/degen/screenshots/dark.png" width="100%" alt="Degen template preview" /></a>
 
 Crypto natives. Terminal-styled due-diligence report. Sells radical transparency.
+
+</td>
+<td width="25%" valign="top">
+
+**[Daily](templates/daily/)**
+*A new drawing, every single day*
+
+<a href="templates/daily/"><img src="templates/daily/screenshots/light.png" width="100%" alt="Daily template preview" /></a>
+
+Habit-driven audiences. Warm, rounded, planner-page UI. Sells the daily cadence, not the jackpot.
 
 </td>
 </tr>

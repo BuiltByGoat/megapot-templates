@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{{SITE_NAME}} — today's Megapot drawing (and tomorrow's, and the one after that)</title>
+<meta name="description" content="Megapot runs a $1 lottery drawing every single day — not once a week. How the daily habit works, what it costs, what it pays, and why a drawing you can check on every day beats one you wait for.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--bg:#f6f2ea;--card:#efe7d6;--card2:#fbf8f1;--ink:#22190f;--muted:#6b5f4d;--line:#ded2b8;
+--accent:var(--brand);--brand:#b45309;--good:#3f7a4f;
+{{THEME_VARS}}
+}
+@media (prefers-color-scheme:dark){
+:root{--bg:#15120c;--card:#211a10;--card2:#1a150e;--ink:#f3ead9;--muted:#b4a48a;--line:#3a2f1e;
+--accent:color-mix(in srgb,var(--brand) 55%,#f3ead9);--good:#6fbd82}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--bg);color:var(--ink);font:400 1.03rem/1.65 var(--sans)}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+.prose{max-width:64ch}
+a{color:var(--accent);text-decoration-thickness:1.5px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2.5px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:14px 20px;z-index:9;text-decoration:none;border-radius:0 0 8px 0}
+.skip:focus-visible{left:0}
+header.mast{padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brandrow{display:flex;align-items:center;gap:10px}
+.dot7{display:flex;gap:3px}
+.dot7 i{width:8px;height:8px;border-radius:2px;background:var(--brand);display:block}
+.brand{font-weight:800;font-size:1.22rem;letter-spacing:-.01em}
+nav a{display:inline-block;padding:12px 10px;margin-left:2px;min-height:44px;line-height:20px;font:700 .82rem/1 var(--sans);color:var(--muted);text-decoration:none;border-radius:8px}
+nav a:hover{color:var(--ink);background:var(--card)}
+.kick{display:inline-flex;align-items:center;gap:8px;font:800 .74rem/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .8rem}
+.kick::before{content:"";width:9px;height:9px;border-radius:3px;background:var(--brand)}
+h1{font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.12;font-weight:800;letter-spacing:-.015em;margin:0 0 1.1rem;max-width:22ch}
+.lede{font-size:1.17rem;line-height:1.6;max-width:56ch;color:var(--muted)}
+h2{font-size:clamp(1.5rem,2.8vw,1.95rem);line-height:1.2;font-weight:800;margin:0 0 1rem;max-width:28ch}
+h3{font-size:1.12rem;font-weight:800;margin:1.5rem 0 .5rem}
+p{margin:0 0 1rem}
+.muted{color:var(--muted)}
+.fine{font-size:.87rem;color:var(--muted);max-width:60ch}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--brand);color:#fff;font:800 1rem/1.1 var(--sans);padding:14px 26px;border-radius:12px;text-decoration:none}
+.cta:hover{filter:brightness(1.1)}
+.ctarow{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:1.6rem 0 .8rem}
+.more{font:700 .93rem/1.2 var(--sans);padding:14px 4px;display:inline-block;text-decoration:none;color:var(--ink)}
+section{padding:48px 0;border-top:1px solid var(--line)}
+.hero{padding:36px 0 40px;border-top:0}
+.card{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px}
+.warn{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:15px 18px;margin:1.8rem 0 0;max-width:62ch}
+.warn p{margin:0;font-size:.95rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin:2rem 0 .4rem}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px}
+.stat .n{display:block;font-size:1.7rem;font-weight:800;line-height:1.15;letter-spacing:-.01em}
+.stat .l{display:block;font:700 .72rem/1.4 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.4rem}
+.week{display:flex;gap:8px;flex-wrap:wrap;margin:1.8rem 0}
+.day{flex:1 1 84px;min-width:74px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:14px 10px;text-align:center}
+.day .d{display:block;font:700 .68rem/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.day .m{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--good);color:#fff;font-weight:800;font-size:.85rem}
+.day .m::before{content:"✓"}
+.freqrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:1.8rem 0 .4rem;max-width:760px}
+.freqrow>div{background:var(--card2);padding:18px 18px 16px}
+.freqrow .n{font-size:2rem;font-weight:800;display:block;line-height:1.1}
+.freqrow .mp{background:var(--card);}
+.freqrow .mp .n{color:var(--accent)}
+.steps{list-style:none;max-width:64ch;counter-reset:step}
+.steps li{padding:1.05rem 0 1rem 3.3rem;position:relative;border-top:1px solid var(--line);counter-increment:step}
+.steps li:first-child{border-top:0}
+.steps li::before{content:counter(step);position:absolute;left:0;top:1.05rem;width:2.1rem;height:2.1rem;background:var(--card);color:var(--accent);border-radius:8px;display:grid;place-items:center;font:800 .95rem var(--sans)}
+.steps b{display:block;font-size:1.06rem;margin-bottom:.15rem}
+.pull{background:var(--card);border-radius:14px;padding:1.1rem 1.4rem;margin:1.8rem 0;font-size:1.2rem;line-height:1.45;font-weight:700;max-width:36ch}
+.bar{display:flex;height:16px;border-radius:8px;overflow:hidden;margin:1.7rem 0 .9rem;max-width:680px}
+.s1{background:var(--brand)}.s2{background:color-mix(in srgb,var(--brand) 40%,var(--bg))}.s3{background:var(--good)}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;font:700 .8rem/1.5 var(--sans);color:var(--muted);max-width:680px;list-style:none}
+.legend i{width:.85em;height:.85em;display:inline-block;border-radius:3px;margin-right:.45em}
+.checks{list-style:none;max-width:64ch}
+.checks li{padding:.9rem 0 .8rem 2.1rem;position:relative;border-top:1px solid var(--line)}
+.checks li:first-child{border-top:0}
+.checks li::before{content:"✓";position:absolute;left:.1rem;top:.9rem;color:var(--good);font-weight:800}
+details{border-top:1px solid var(--line);max-width:70ch}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:16px 6px;font-weight:800;font-size:1.02rem;min-height:44px;display:flex;align-items:center}
+summary::marker{color:var(--accent)}
+summary:hover{color:var(--accent)}
+details p{margin:0 0 .9rem;padding:0 6px;max-width:62ch}
+details p:last-child{padding-bottom:1.2rem}
+footer{border-top:1px solid var(--line);margin-top:20px;padding:32px 0 60px;font-size:.9rem;color:var(--muted)}
+footer p{margin:0 0 .75rem;max-width:78ch}
+footer .brand{color:var(--ink);font-weight:800;font-size:1.05rem}
+</style>
+</head>
+<body>
+<!-- {{PAGE_NOTE}} -->
+<a class="skip" href="#main">Skip to main content</a>
+<header class="mast wrap">
+<div class="brandrow">
+<span class="dot7" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+<p class="brand">{{SITE_NAME}}</p>
+</div>
+<nav aria-label="Sections">
+<a href="#today">Today</a>
+<a href="#how">How it works</a>
+<a href="#odds">The odds</a>
+<a href="#money">The money</a>
+<a href="#faq">FAQ</a>
+</nav>
+</header>
+<main id="main">
+<section class="hero wrap" id="today">
+<p class="kick">A drawing every single day</p>
+<h1>{{TAGLINE}}</h1>
+<p class="lede">Most lotteries make you wait — two or three drawings a week, and the rest is just checking back. Megapot runs a $1 lottery with a drawing every day of the year, and it publishes the result immediately. No waiting for Saturday. There's a drawing today, there was one yesterday, and there'll be one tomorrow.</p>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Play today's drawing</a>
+<a class="more" href="#today">See how the daily habit works ↓</a>
+</div>
+<p class="fine">Sign up with an email, $1 a ticket · takes about a minute.</p>
+<div class="stats">
+<div class="stat"><span class="n">$1,000,000+</span><span class="l">In daily prizes</span></div>
+<div class="stat"><span class="n">$1</span><span class="l">Per ticket, every drawing</span></div>
+<div class="stat"><span class="n">365</span><span class="l">Drawings a year, not 52</span></div>
+<div class="stat"><span class="n">1 in 4</span><span class="l">Tickets win something*</span></div>
+</div>
+<p class="fine">*Megapot's published odds — the full breakdown is below.</p>
+<div class="warn">
+<p><strong>Fair warning:</strong> more drawings does not mean better odds on any single ticket — each day's drawing stands on its own. Megapot's published economics put the expected return at about 77.5 cents per $1 ticket, so most tickets lose. Play for fun, with money you'd spend on a coffee. 18+ only.</p>
+</div>
+</section>
+
+<section id="week" class="wrap">
+<p class="kick">The habit</p>
+<h2>Every day has a drawing. That's the whole idea.</h2>
+<div class="prose">
+<p>A weekly lottery gives you one shot and six days of nothing. Megapot's daily format means checking in is a small, repeatable habit rather than a once-a-week event — results are published the moment each drawing settles, every day, including weekends and holidays.</p>
+</div>
+<div class="week" role="img" aria-label="A Megapot drawing happens every day of the week, Monday through Sunday">
+<div class="day"><span class="d">Mon</span><span class="m" aria-hidden="true"></span></div>
+<div class="day"><span class="d">Tue</span><span class="m" aria-hidden="true"></span></div>
+<div class="day"><span class="d">Wed</span><span class="m" aria-hidden="true"></span></div>
+<div class="day"><span class="d">Thu</span><span class="m" aria-hidden="true"></span></div>
+<div class="day"><span class="d">Fri</span><span class="m" aria-hidden="true"></span></div>
+<div class="day"><span class="d">Sat</span><span class="m" aria-hidden="true"></span></div>
+<div class="day"><span class="d">Sun</span><span class="m" aria-hidden="true"></span></div>
+</div>
+<p class="fine">Every day of the week has its own drawing and its own winners — this isn't a countdown to one weekly event, it's a routine.</p>
+<h3>For scale, most lotteries draw two or three times a week</h3>
+<div class="freqrow">
+<div class="mp"><span class="n">365</span><span class="l muted">Megapot drawings per year</span></div>
+<div><span class="n">≈156</span><span class="l muted">Powerball drawings per year (drawn 3×/week)</span></div>
+<div><span class="n">≈104</span><span class="l muted">Mega Millions drawings per year (drawn 2×/week)</span></div>
+</div>
+<p class="fine">A daily format doesn't change the odds of any one ticket — it changes how often a new, independent drawing happens.</p>
+</section>
+
+<section id="how" class="wrap">
+<p class="kick">The mechanics</p>
+<h2>How it works, in four steps</h2>
+<ol class="steps">
+<li><b>Sign up with just your email.</b> No downloads, nothing technical — an account is created on the spot.</li>
+<li><b>Pick five numbers from 1 to 30, plus one bonus number.</b> Or let Quick Pick choose for you. Every ticket is $1.</li>
+<li><b>That day's drawing runs on schedule.</b> Winning numbers are drawn daily and published immediately — check back at the same time each day if you like the routine.</li>
+<li><b>If you win, it's instant.</b> No claim forms, no waiting weeks — winnings are yours the moment results are in.</li>
+</ol>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Try today's ticket</a>
+<span class="fine">All you need is an email address.</span>
+</div>
+</section>
+
+<section id="odds" class="wrap">
+<p class="kick">The numbers</p>
+<h2>The odds, printed in full — every single day</h2>
+<div class="prose">
+<p><strong>Ten ways to win.</strong> Prize tiers run from matching just the bonus number up to all five numbers plus the bonus. By Megapot's published odds, 1 in 4 tickets wins something on any given day's drawing — and that's true every day, not just a headline week.</p>
+<p><strong>The jackpot:</strong> matching five of thirty numbers is roughly a 1-in-142,506 shot, per Megapot's docs. With the bonus number added, jackpot odds land between about 1 in 713,000 and 1 in 1.4 million, depending on that day's bonus-number range — which moves with the size of the prize pool to keep it sustainable.</p>
+<p><strong>How prizes are paid:</strong> every winning ticket gets a guaranteed minimum for its tier, plus a share of a premium pool split across tiers (the jackpot tier alone takes 33% of it). Tickets with identical numbers share their premium, so less-popular picks can pay more.</p>
+</div>
+<p class="pull">1 in 4 tickets wins one of ten prize tiers — every day, per Megapot's published odds.</p>
+</section>
+
+<section id="money" class="wrap">
+<p class="kick">The economics</p>
+<h2>Where each day's dollar goes</h2>
+<div class="prose">
+<p>Megapot publishes this breakdown for every dollar of ticket sales, every drawing: about 77.5 cents returns to players as prizes over time, about 12.5 cents goes to the backers who fund the prize pool, and the remaining 10 cents goes to the people who bring new players in. Nothing is skimmed off for a state program or corporate overhead.</p>
+</div>
+<div class="bar" aria-hidden="true"><span class="s1" style="flex:775"></span><span class="s2" style="flex:125"></span><span class="s3" style="flex:100"></span></div>
+<ul class="legend">
+<li><i class="s1" aria-hidden="true"></i>77.5¢ — prizes to players</li>
+<li><i class="s2" aria-hidden="true"></i>12.5¢ — the backers who fund the prize pool</li>
+<li><i class="s3" aria-hidden="true"></i>10¢ — the people who grow the community</li>
+</ul>
+<div class="prose">
+<h3>So what's the catch?</h3>
+<p>The same catch every honest lottery has: a house edge. About 77.5 cents back per dollar means the expected return on a $1 ticket is about 77.5 cents — stated plainly in Megapot's own documentation. Playing every day doesn't change that math on any one ticket; it just means a fresh, independent shot each day instead of one a week. Treat it as a small daily ritual with a chance of a very good day, not a plan.</p>
+</div>
+<div class="ctarow"><a class="cta" href="{{INVITE_URL}}" rel="noopener">Play today, eyes open — $1</a></div>
+</section>
+
+<section id="verify" class="wrap">
+<p class="kick">Trust, then verify</p>
+<h2>Checkable every day, not just on request</h2>
+<div class="prose"><p>Because a new result posts daily, there's a lot more to check than a once-a-week drawing gives you. Megapot's answer to "is it rigged?" comes in four parts, all independently checkable:</p></div>
+<ul class="checks">
+<li><b>The draw can't be steered.</b> Winning numbers come from an independent public randomness service that, per Megapot's documentation, no one — Megapot included — can predict or influence.</li>
+<li><b>Every day's record is public.</b> Every ticket, drawing, and payout is written to a permanent public record. Past results are published at <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a>.</li>
+<li><b>The system is audited.</b> Independently audited four times — reports linked from <a href="https://docs.megapot.io" rel="noopener">Megapot's documentation</a>.</li>
+<li><b>The operator is licensed.</b> Megapot is a licensed gaming operator, with players in more than 160 countries.</li>
+</ul>
+<div class="stats">
+<div class="stat"><span class="n">July 2024</span><span class="l">Drawing daily since</span></div>
+<div class="stat"><span class="n">$200,000,000+</span><span class="l">Run through drawings to date</span></div>
+<div class="stat"><span class="n">19</span><span class="l">Jackpot winners so far — and counting</span></div>
+<div class="stat"><span class="n">160+</span><span class="l">Countries with players</span></div>
+</div>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Check today's drawing yourself</a>
+</div>
+</section>
+
+<section id="faq" class="wrap">
+<p class="kick">Before you start</p>
+<h2>Questions people ask about the daily format</h2>
+<details>
+<summary>Do I have to play every day to have a chance?</summary>
+<p>No. Each day's drawing is independent — playing more often gets you more independent tries, but it does not improve the odds of any single $1 ticket. Play as often (or as rarely) as you like.</p>
+</details>
+<details>
+<summary>What's the catch?</summary>
+<p>A house edge, the same as any lottery. Megapot's published economics put the expected return at about 77.5 cents per $1 ticket, so most tickets lose over time. It's a materially better return than most traditional lotteries offer, but it's still a lottery.</p>
+</details>
+<details>
+<summary>Why does Megapot draw daily instead of weekly?</summary>
+<p>It's a design choice, not a gimmick — Megapot publishes a result every day of the year rather than batching drawings into one or two weekly events. That means more total drawings and more total winners across a year, though it doesn't change any single ticket's odds.</p>
+</details>
+<details>
+<summary>How do I know a given day's drawing is fair?</summary>
+<p>The winning numbers come from a public randomness service that, per Megapot's documentation, no one — including Megapot — can predict or influence. Every drawing, ticket, and payout is written to a permanent public record, the system has been audited four times, and the operator is licensed. Check the record yourself at <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a>.</p>
+</details>
+<details>
+<summary>How do I collect if I win?</summary>
+<p>Instantly — no claim forms, no waiting weeks. Results are published immediately after each day's drawing.</p>
+</details>
+<details>
+<summary>What do I need to get started?</summary>
+<p>An email address and $1. Pick five numbers from 1 to 30 plus a bonus number — or let Quick Pick choose — and you're in that day's drawing.</p>
+</details>
+<details>
+<summary>What is this site's relationship to Megapot?</summary>
+<p>{{SITE_NAME}} is an independent referral site: we explain the daily format and link you to it. All play, payments, and payouts happen on megapot.io, operated by Megapot — not by us. We never handle your money and don't run the drawings.</p>
+</details>
+</section>
+
+<section id="play" class="wrap">
+<p class="kick">Today, specifically</p>
+<h2>There's a drawing today. Might as well be in it.</h2>
+<div class="prose">
+<p>A $1 ticket, $1,000,000+ in daily prizes, and a new independent shot every single day of the year. Odds and economics published in full, results anyone can verify, and a house edge Megapot states in writing. Make it a small daily habit — occasionally, cheerfully, and with money you can afford to lose.</p>
+</div>
+<div class="ctarow">
+<a class="cta" href="{{INVITE_URL}}" rel="noopener">Play today's drawing at megapot.io</a>
+</div>
+<p class="fine">18+ only · Most tickets lose · Play responsibly</p>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<p class="brand">{{SITE_NAME}}</p>
+<p>{{SITE_NAME}} is an independent referral site, not Megapot. All play happens on <a href="https://megapot.io" rel="noopener">megapot.io</a>, which is operated by Megapot.</p>
+<p>{{DISCLAIMER}}</p>
+<p>18+ only. A lottery is entertainment, not income: most tickets lose. Play responsibly, with money you can afford to spend on fun.</p>
+<p>Sources: <a href="https://docs.megapot.io" rel="noopener">docs.megapot.io</a> · <a href="https://megapot.io/results" rel="noopener">megapot.io/results</a> — all odds, percentages, and figures on this page are as published by Megapot. Powerball/Mega Millions drawing-frequency figures are these games' well-known public schedules, cited for scale only.</p>
+</div>
+</footer>
+{{CLICK_BEACON}}
+</body>
+</html>
