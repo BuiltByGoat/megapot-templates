@@ -48,8 +48,9 @@ Crypto natives. Terminal-styled due-diligence report. Sells radical transparency
 **[Daily](templates/daily/)**
 *A new drawing, every single day*
 
+<a href="templates/daily/"><img src="templates/daily/screenshots/light.png" width="100%" alt="Daily template preview" /></a>
+
 Habit-driven audiences. Warm, rounded, planner-page UI. Sells the daily cadence, not the jackpot.
-*(screenshots pending)*
 
 </td>
 </tr>

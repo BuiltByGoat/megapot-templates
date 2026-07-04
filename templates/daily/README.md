@@ -6,8 +6,12 @@ you wait for one weekly (or twice-weekly) event, but Megapot draws every single 
 year and publishes results immediately. This template sells the *cadence* — checking in is a
 small, repeatable routine, not a countdown to Saturday.
 
-*Screenshots pending — no browser available in the environment that built this template. See
-the section-by-section breakdown below for the full picture in the meantime.*
+<p align="center">
+  <img src="screenshots/light.png" width="49%" alt="Daily template, light mode — hero section" />
+  <img src="screenshots/dark.png" width="49%" alt="Daily template, dark mode — hero section" />
+</p>
+
+[**View the full scrolled page →**](screenshots/full-page.png)
 
 ## Why this template exists
 
